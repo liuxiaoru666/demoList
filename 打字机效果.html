@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打字效果</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .wrap{
+            width:100%;
+            height:100vh;
+            background:gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap" id='wrap'>
+            <div id="textLine"></div>
+            
+    </div>
+</body>
+<script>
+      var index=0;
+    var word=`在这三维一体的核心价值观中，个人的核心价`+
+`值观是社会道德生活的基础，而国家层面的核心价值观是理想目标，社`+
+`会层面的核心价值观则是使得我们能够实现国家层面的核心价值观不可`+
+`逾越的中间环节。这样创造性地将核心价值观的内涵进行区分性表述，`+
+`在理论建设上有着重大的意义，同时对于培育社会主义核心价值观有着`+
+`深远的意义`;
+    function type(){
+        document.getElementById("textLine").innerText = word.substring(0,index++);
+    }
+    setInterval(type, 200);
+</script>
+</html>
