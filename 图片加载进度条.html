@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>CSS3</title>
+		<style>
+			*{
+				padding:0;
+				margin:0;
+			}
+			.loadingBox{
+				width:100%;
+				height:44px;
+				background:red;
+				padding:12px  30px;
+				box-sizing: border-box;
+			}
+			.loadLine{
+				width:100%;
+				height:20px;
+				background:#fff;
+				border-radius:10px;
+				overflow:hidden;
+			}
+			.percent{
+				display: block;
+				background:yellow;
+				height:20px;
+				width:0;
+				transition: all 100ms linear;
+			}
+			#num{
+				width:30px;
+				height:44px;
+				line-height:44px;
+				position:absolute;
+				top:0;
+				right:0;
+				text-align: center;
+			}
+			img{width:100%;}
+		</style>
+	<body>
+		<div class="loadingBox">
+			<div class='loadLine'>
+				<span class='percent'></span>
+			</div>
+		</div>
+		<span id='num'></span>
+		<img src="http://pic15.nipic.com/20110813/1993003_205156492136_2.jpg" alt="">
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556796944084&di=0ca1731965e31ae7e8f763186d2f64c1&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-4o3dSag_xI4khGko9WTAnF6hhy%2Flvpics%2Fh%3D800%2Fsign%3Db49dc48f8718367ab28972dd1e728b68%2F9922720e0cf3d7ca7f0736d0f31fbe096a63a9a6.jpg" alt="">
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556796944278&di=b95a18b61ae63a404c045a5b761f9ed7&imgtype=0&src=http%3A%2F%2Fpic1.nipic.com%2F2009-02-03%2F200923879772_2.jpg" alt="">
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556796944277&di=406e74c1e3e8d5cf7867506fd1eaf554&imgtype=0&src=http%3A%2F%2Fimg.ph.126.net%2FoctgWQrgsYorV-F5Eb4-ug%3D%3D%2F3407254593083917398.jpg" alt="">
+		<img src="http://pic37.nipic.com/20140113/8800276_184927469000_2.png" alt="">
+		<img src="http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg" alt="">
+		<img src="http://pic32.nipic.com/20130823/13339320_183302468194_2.jpg" alt="">
+		<img src="http://pic40.nipic.com/20140412/18428321_144447597175_2.jpg" alt="">
+		<img src="http://pic37.nipic.com/20140110/17563091_221827492154_2.jpg" alt="">
+		<img src="http://pic40.nipic.com/20140331/9469669_142840860000_2.jpg" alt="">
+		<img src="http://pic81.nipic.com/file/20151104/12569972_011432950000_2.jpg" alt="">
+		<img src="http://img.redocn.com/sheying/20140731/qinghaihuyuanjing_2820969.jpg" alt="">
+		<img src="http://pic29.nipic.com/20130517/9252150_140653449378_2.jpg" alt="">
+		<img src="http://pic36.nipic.com/20131126/8821914_071759099000_2.jpg" alt="">
+		<img src="http://pic53.nipic.com/file/20141115/9448607_175255450000_2.jpg" alt="">
+	</body>
+	<script type="text/javascript">
+	var oPer = document.getElementsByClassName('percent')[0];
+
+
+	//根据图片加载计算页面加载百分比
+	function perFun(){
+    var imgs = document.getElementsByTagName("img");
+    var len = 0;
+    for(var i=0; i<imgs.length; i++){
+      (function(i){
+        imgs[i].onload = function(){
+          len ++;
+          oPer.style.width = Math.round(len*100/imgs.length)+'%';
+		  document.getElementById('num').innerText = Math.round(len*100/imgs.length);
+		  if(Math.round(len*100/imgs.length)>=100){
+			console.log('加载完成！')
+		  }
+        }
+      })(i);
+    }
+ }
+ perFun();
+	
+	</script>
+</html>
