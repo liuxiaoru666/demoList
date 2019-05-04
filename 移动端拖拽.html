@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .dragBox {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dragBox" id='dragBox'></div>
+    <script>
+
+        //与pc拖拽的区别
+        //mousedowm、mousemove、mouseup分别对应touchstart、touchmove、touchend
+        //获取位置通过event.touchs获取
+
+
+
+
+        //构造函数
+        function Drag(select) {
+            this.el = document.getElementById(select);
+            this.init();
+        }
+        //初始化函数
+        Drag.prototype.init = function () {
+            var that = this;
+            this.el.ontouchstart = function (event) {
+                //触摸开始事件
+                that.fnTouchStart(event);
+            }
+        }
+        //fnTouchStart
+        Drag.prototype.fnTouchStart = function (event) {
+            var that = this;
+            console.log(this.el.offsetLeft)
+            var evt = event || window.event;//window.event 兼容IE6/7/8
+            this.pageX = evt.touches[0].clientX-this.el.offsetLeft;//触摸点相对元素的X坐标
+            this.pageY =evt.touches[0].clientY-this.el.offsetTop;//触摸点相对于元素的y坐标
+            //触摸移动事件
+            document.ontouchmove = function (event) {
+                that.fTouchMove(event);
+            }
+            //触摸抬起事件
+            document.ontouchend = function (event) {
+                that.fnTouchEnd();
+            }
+
+        }
+        //fTouchMove
+        Drag.prototype.fTouchMove = function (event) {
+            var evt = event || window.event;
+            //clientX，触摸点相对body的X坐标
+            var left = evt.touches[0].clientX - this.pageX,
+                top = event.touches[0].clientY - this.pageY,
+                clientWidth = document.documentElement.clientWidth || document.body.clientWidth,
+                clientHeight = document.documentElement.clientHeight || document.body.clientHeight
+                ;
+
+
+            var maxWidth = clientWidth - this.el.offsetWidth,
+                maxHeight = clientHeight - this.el.offsetHeight;
+            this.el.style.left = left + 'px';
+            this.el.style.top = top + 'px';
+            // 边界检测
+            if (left <= 0) {
+                this.el.style.left = '0px'
+            } else if (left >= maxWidth) {
+                this.el.style.left = maxWidth + 'px'
+            }
+
+            if (top <= 0) {
+                this.el.style.top = '0px'
+            } else if (top >= maxHeight) {
+                this.el.style.top = maxHeight + 'px'
+            }
+
+        }
+        //fnTouchEnd
+        Drag.prototype.fnTouchEnd = function () {
+            document.ontouchmove = null;
+        }
+
+
+       
+        new Drag('dragBox');
+
+
+
+
+    </script>
+</body>
+
+</html>
