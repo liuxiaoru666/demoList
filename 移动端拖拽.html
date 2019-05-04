@@ -29,7 +29,8 @@
 
         //与pc拖拽的区别
         //mousedowm、mousemove、mouseup分别对应touchstart、touchmove、touchend
-        //获取位置通过event.touchs获取
+        //获取触摸点相对body位置e.touches[0].clientX
+        //获取触摸点相对事件源位置e.touches[0].clientX-ele.offsetLeft
 
 
 
@@ -50,7 +51,6 @@
         //fnTouchStart
         Drag.prototype.fnTouchStart = function (event) {
             var that = this;
-            console.log(this.el.offsetLeft)
             var evt = event || window.event;//window.event 兼容IE6/7/8
             this.pageX = evt.touches[0].clientX-this.el.offsetLeft;//触摸点相对元素的X坐标
             this.pageY =evt.touches[0].clientY-this.el.offsetTop;//触摸点相对于元素的y坐标
