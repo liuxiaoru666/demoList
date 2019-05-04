@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽+继承</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+    .dragBox{
+        width:100px;
+        height:100px;
+        background:red;
+        position:absolute;
+        top:0;
+        left:0;
+    }
+    .dragBox2{
+        width:100px;
+        height:100px;
+        background:blue;
+        position:absolute;
+        top:0;
+        right:0;
+    }
+    </style>
+</head>
+<body>
+    <div class="dragBox" id='dragBox'></div>
+    <div class="dragBox2" id='dragBox2'></div>
+    <script>
+        //构造函数
+        function Drag(select){
+            this.el = document.getElementById(select);
+            this.init();
+        }
+        //初始化函数
+        Drag.prototype.init = function(){
+            var that = this;
+            this.el.onmousedown=function(event){
+                //鼠标按下事件
+                that.fnMouseDown(event);
+            }
+        }
+        //fnMouseDown
+        Drag.prototype.fnMouseDown=function(event){
+            var that = this;
+            var evt = event||window.event;//window.event 兼容IE6/7/8
+            this.offsetX = evt.offsetX;//鼠标相对元素的X坐标
+            this.offsetY = evt.offsetY;//鼠标相对于元素的y坐标
+                //鼠标拖动事件
+                document.onmousemove = function(event){
+                    that.fnMouseMove(event);
+                }
+                //鼠标抬起事件
+                document.onmouseup = function(event){
+                    that.fnMouseUp();
+                }
+
+        }
+        //fnMouseMove
+        Drag.prototype.fnMouseMove = function(event){
+            var evt = event||window.event;
+            //clientX鼠标相对body的X坐标
+            var left = evt.clientX - this.offsetX,
+                top = evt.clientY - this.offsetY,
+                clientWidth = document.documentElement.clientWidth||document.body.clientWidth,
+                clientHeight = document.documentElement.clientHeight||document.body.clientHeight
+                ;
+            var maxWidth =clientWidth-this.el.offsetWidth,
+                maxHeight =clientHeight-this.el.offsetHeight;
+
+                this.el.style.left = left +'px';
+                this.el.style.top = top +'px';
+                // 边界检测
+                if(left<=0){
+                    this.el.style.left='0px'
+                }else if(left>=maxWidth){
+                    this.el.style.left = maxWidth+'px'
+                }
+
+                if(top<=0){
+                    this.el.style.top='0px'
+                }else if(top>=maxHeight){
+                    this.el.style.top = maxHeight+'px'
+                }
+         
+        }
+        //fnMouseUp
+        Drag.prototype.fnMouseUp = function(){
+            document.onmousemove = null;
+        }
+
+        new Drag('dragBox');
+
+
+
+        //原型继承
+        function extendDrag(name){
+            Drag.call(this,name)
+            }
+
+        for(var i in Drag.prototype){
+            extendDrag.prototype[i]=Drag.prototype[i]
+        }
+        new extendDrag('dragBox2');
+    </script>
+</body>
+</html>
