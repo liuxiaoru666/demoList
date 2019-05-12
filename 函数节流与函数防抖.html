@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数节流与函数防抖</title>
+</head>
+
+<body>
+    <button id='throttle'>函数节流</button>
+    <button id='debounce'>函数防抖</button>
+    <script>
+        //函数节流
+        //一段时间内连续触发函数，只执行一次，用于稀释函数的执行频率
+        function throttle(fun, wait) {
+            let preTime = 0;//上次的执行时间
+            return function () {
+                let now = Date.now();//获取当前时间戳
+                let args = arguments;
+                if (now - preTime >= wait) {
+                    fun.apply(this, args);//调用回调函数
+                    preTime = now;//更新每一次执行时间
+                }
+            };
+        }
+        var oTh = document.getElementById('throttle');
+        oTh.onclick = throttle(function () { 
+            console.log('执行了一次') 
+            }, 2000)
+
+        //函数防抖
+        function debounce(fun, wait) {
+            let timer = null;
+            return function () {
+                if (timer) {
+                    clearInterval(timer);
+                }
+                let that = this;
+                let args = arguments;
+                timer = setTimeout(function () {
+                    fun.apply(that, args)
+
+                }, wait)
+            }
+
+
+        }
+        var oDe = document.getElementById('debounce');
+        oDe.onclick = debounce(function () { 
+            console.log('执行了一次') 
+            }, 2000)
+
+
+    </script>
+</body>
+
+</html>
