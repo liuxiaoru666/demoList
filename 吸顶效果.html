@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>吸顶效果</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+ 
+    .banner {
+        height: 200px;
+    }
+    .nav {
+        height: 40px;
+        background-color: red;
+        border: 1px solid silver;
+    }
+    .nav div{
+        float:left;
+        width:50%;
+        text-align: center;
+        height:100%;
+    }
+    .sticky {
+        /*滚过初始位置时自动吸顶*/
+        position: -webkit-sticky;
+        position: sticky;
+        /*吸顶时的定位*/
+        top: 0;
+        left: 0;
+        /*z比下方所有z高*/
+        z-index: 9999;
+    }
+    .content {
+        height: 1500px;
+    }
+ 
+    .fixed-top {
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="banner">Banner图</div>
+    <div class="nav">
+      吸顶元素
+    </div>
+    <div class="content">
+       很长的内容区域
+    </div>
+<script>
+    var stickyEl = document.querySelector('.nav');
+	function fixed(num) {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; 
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); 
+        console.log(isAndroid,isiOS)
+        if(true) {
+            document.body.onscroll = function() {
+                var scrollTop = document.body.scrollTop||document.documentElement.scrollTop;
+                if (scrollTop > num) {
+                    stickyEl.classList.add('fixed-top');
+                }else {
+                    stickyEl.classList.remove('fixed-top');
+                }
+            };
+        }else if(isiOS) {
+            stickyEl.classList.add('sticky');
+        }
+    }
+
+    fixed(200);
+   
+    
+</script>
+</body>
