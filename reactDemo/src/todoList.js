@@ -1,10 +1,10 @@
 import React,{Component,Fragment} from 'react';
-import TodoItem from './todoItem';
 //store
 import store from './store';
-//antd组件库
-import { Input,Button} from 'antd';
-import 'antd/dist/antd.css';
+//引入actions
+import {getInputChangeAction,getAddItemAction,getDeletItemAction} from './store/actionCreator';
+
+import TodoListUI from './todoListUI'; 
 class TodoList extends Component {
     constructor(props){
         super(props);
@@ -21,57 +21,21 @@ class TodoList extends Component {
         this.handleStoreChange = this.handleStoreChange.bind(this);
         //订阅store改变，触发方法
         store.subscribe(this.handleStoreChange);
-
-        
     }
-    
     //组件挂载
     render(){
-        return(
-            //jsx语法外层要有一个包裹元素,用Fragment占位符，可以隐藏最外层标签
-            <Fragment>
-                {
-                    //绑定事件要驼峰写法
-                    //js表达式和变量写在花括号里面
-                    //类名要用className
-                    //label for要用htmlFor
-                    //dangerouslySetInnerHTML属性的使用
-                }
-                <div style={{marginTop:'10px'}}>
-                    <label htmlFor='fs'>输入内容</label>
-                    <Input  
-                    style={{width:'300px',marginRight:'20px'}}
-                    placeholder='请输入内容'
-                    id='fs' 
-                    className='input' 
-                    value={this.state.inputValue} 
-                    onChange={this.handleInputChange}
-                    />
-                    <Button onClick={this.handleClick}>提交</Button>
-                </div>
-                <ul>
-                    {
-                    this.state.listArr.map((item,index)=>{
-                        // 给循环渲染的对象加key
-                        return(//此括号不能换行
-                                <TodoItem 
-                                    key={item}
-                                    content ={item} 
-                                    index={index} 
-                                    deletItem={this.handleDelete}/>
-                        )
-                    })
-                   }
-                </ul>
-            </Fragment>
+        return (
+            <TodoListUI 
+            inputValue={this.state.inputValue} 
+            handleInputChange={this.handleInputChange}
+            handleClick = {this.handleClick}
+            list={this.state.listArr}
+            handleDelete={this.handleDelete}
+            />
         )
     }
     handleInputChange(e){
-        const action = {
-            type:'change_input_value',
-            inputValue:e.target.value
-        }
-        store.dispatch(action);
+        store.dispatch(getInputChangeAction(e.target.value));
         //setState负责处理改变数据
         // this.setState({
         //     inputValue:e.target.value
@@ -80,10 +44,7 @@ class TodoList extends Component {
     }
     handleClick(){
         if(this.state.inputValue){
-            const action = {
-                type:'add_item',
-            }
-            store.dispatch(action)
+            store.dispatch(getAddItemAction())
 
             // this.setState({
             //     //改变数组(...Es6展开运算符)
@@ -96,11 +57,8 @@ class TodoList extends Component {
     handleDelete(index){
         //immutable
         //改变数据必须调用setState，state不允许直接改变state内容
-        const action = {
-            type:'delet_item',
-            index:index
-        }
-        store.dispatch(action);
+        
+        store.dispatch(getDeletItemAction(index));
 
         // const list = [...this.state.listArr];
         // list.splice(index,1);

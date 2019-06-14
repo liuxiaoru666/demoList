@@ -14,7 +14,7 @@ class TodoItem extends Component {
         return(
             <Fragment>
                 {/*通过props获取父组件传递的数据*/}
-                <div onClick={this.handleClick}>{test}-{content}</div>
+                <div onClick={this.handleClick}>{content}</div>
             </Fragment>
         )
     }
