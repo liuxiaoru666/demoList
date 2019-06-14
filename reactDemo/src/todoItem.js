@@ -34,15 +34,15 @@ class TodoItem extends Component {
 }
 //属性强校验
 //isRequired 表示必传
-TodoItem.propTypes={
-    test:PropTypes.string.isRequired,
-    content:PropTypes.string,
-    deleteItem:PropTypes.func,
-    index:PropTypes.number
-}
+// TodoItem.propTypes={
+//     test:PropTypes.string.isRequired,
+//     content:PropTypes.string,
+//     deleteItem:PropTypes.func,
+//     index:PropTypes.number
+// }
 //属性默认值
-TodoItem.defaultProps={
-    test:'hello world'
-}
+// TodoItem.defaultProps={
+//     test:'hello world'
+// }
 
 export default TodoItem;
