@@ -1,20 +1,22 @@
-import React,{Component,Fragment} from 'react';
+import React,{Component} from 'react';
 //store
 import store from './store';
 //引入actions
-import {getInputChangeAction,getAddItemAction,getDeletItemAction} from './store/actionCreator';
+import {getToduList,getInputChangeAction,getAddItemAction,getDeletItemAction,initListAction} from './store/actionCreator';
 
 import TodoListUI from './todoListUI'; 
+
+
 class TodoList extends Component {
     constructor(props){
         super(props);
         //从store获取组件状态
-        this.state = store.getState();
+        this.state=store.getState();
         // this.state = {
         //     inputValue:'',
         //     listArr:[]
         // };
-        {/*方法在此处绑定this*/}
+        /*方法在此处绑定this*/
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -28,12 +30,23 @@ class TodoList extends Component {
             <TodoListUI 
             inputValue={this.state.inputValue} 
             handleInputChange={this.handleInputChange}
-            handleClick = {this.handleClick}
+            handleClick={this.handleClick}
             list={this.state.listArr}
             handleDelete={this.handleDelete}
             />
         )
     }
+    //ajax数据请求
+    componentDidMount(){
+        const action = getToduList();
+        store.dispatch(action)//执行action函数
+
+        // axios.get('./list.json').then(res=>{
+        //     const data = res.data;
+        //     store.dispatch(initListAction(data))
+        // })
+    }
+  
     handleInputChange(e){
         store.dispatch(getInputChangeAction(e.target.value));
         //setState负责处理改变数据
