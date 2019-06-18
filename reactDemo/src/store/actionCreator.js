@@ -3,7 +3,7 @@ import axios from 'axios';
 //统一管理action
 
 
-import {CHANGE_INPUT_VALUE,ADD_ITEM,DELET_ITEM,INIT_LIST_ACTION} from './actiontype';
+import {CHANGE_INPUT_VALUE,ADD_ITEM,DELET_ITEM,INIT_LIST_ACTION,SAGA_GET_LIST } from './actiontype';
 import store from '.';
 
 export const getInputChangeAction=(inputValue)=>({
@@ -28,11 +28,16 @@ export const initListAction=(data)=>({
 //异步请求
 //redux-thunk让action可以返回一个函数，发送给store
 //获取数据，dispatch改变数据
-export const getToduList = ()=>{
-    return(dispatch)=>{
-        axios.get('../list.json').then(res=>{
-            const data = res.data;
-            dispatch(initListAction(data));
-        }) 
-    }
-}
+// export const thunkGetList = ()=>{
+//     return(dispatch)=>{
+//         axios.get('../list.json').then(res=>{
+//             const data = res.data;
+//             dispatch(initListAction(data));
+//         }) 
+//     }
+// }
+
+//redux-saga
+export const sagaGetList=()=>({
+    type:SAGA_GET_LIST
+})

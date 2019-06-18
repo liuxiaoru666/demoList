@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
+import axios from 'axios';
 //store
 import store from './store';
 //引入actions
-import {getToduList,getInputChangeAction,getAddItemAction,getDeletItemAction,initListAction} from './store/actionCreator';
+import {thunkGetList,getInputChangeAction,getAddItemAction,getDeletItemAction,initListAction,sagaGetList} from './store/actionCreator';
 
 import TodoListUI from './todoListUI'; 
 
@@ -38,9 +39,15 @@ class TodoList extends Component {
     }
     //ajax数据请求
     componentDidMount(){
-        const action = getToduList();
-        store.dispatch(action)//执行action函数
+        //redux-thunk
+        // const action = thunkGetList();
+        // store.dispatch(action)//执行action函数
 
+        // redux-saga
+        const action = sagaGetList();
+        store.dispatch(action);//执行action函数
+
+ 
         // axios.get('./list.json').then(res=>{
         //     const data = res.data;
         //     store.dispatch(initListAction(data))
