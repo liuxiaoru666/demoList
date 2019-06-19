@@ -38,6 +38,22 @@ line-height:56px;
 }
 `;
 
+export const NavSearchWrapper = styled.div`
+height:100%;
+float:left; 
+position:relative;
+.iconfont{
+    position:absolute;
+    right:5px;
+    top:13px;
+    width:30px;
+    height:30px;
+    text-align:center;
+    line-height:30px;
+    border-radius:15px;
+
+}
+`;
 export const NavSearch = styled.input.attrs({placeholder:'搜索'})`
 width:160px;
 height:38px;
@@ -72,6 +88,9 @@ height:38px;
 line-height:38px;
 border-radius:19px;
 font-size:15px;
+.iconfont{
+    margin-right:5px;
+}
 &.reg{
     color:#ea6f5a;
     border:1px solid #ea6f5a;
