@@ -11,6 +11,17 @@ import {
 } from './style';
 
 class Header extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            focus:false
+        }
+        this.handleInputFocus = this.handleInputFocus.bind(this);
+        this.handleInputBlur = this.handleInputBlur.bind(this);
+
+    }
+
     render(){
         return(
             <HeaderWrapper>
@@ -21,8 +32,12 @@ class Header extends Component {
                     <NavItem className='right'>登录</NavItem>
                     <NavItem className='right'><i className='iconfont'>&#xe636;</i></NavItem>
                     <NavSearchWrapper>
-                    <NavSearch></NavSearch>
-                    <i className='iconfont'>&#xe800;</i>
+                    <NavSearch 
+                    className={this.state.focus?'focused':''} 
+                    onFocus={this.handleInputFocus}
+                    onBlur={this.handleInputBlur}
+                    ></NavSearch>
+                    <i  className={this.state.focus?'focused iconfont':'iconfont'}>&#xe800;</i>
                     </NavSearchWrapper>
                 </Nav>
                 <Adition>
@@ -31,6 +46,17 @@ class Header extends Component {
                 </Adition>
             </HeaderWrapper>
         )
+    }
+
+    handleInputFocus(){
+        this.setState({
+            focus:true
+        })
+    }
+    handleInputBlur(){
+        this.setState({
+            focus:false
+        })
     }
 }
 

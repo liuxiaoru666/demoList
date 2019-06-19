@@ -51,22 +51,30 @@ position:relative;
     text-align:center;
     line-height:30px;
     border-radius:15px;
-
+    &.focused{
+        background:#999;
+    }
 }
 `;
+
 export const NavSearch = styled.input.attrs({placeholder:'搜索'})`
-width:160px;
+width:180px;
 height:38px;
 margin-top:9px;
 border:none;
 border-radius:19px;
 background:#eee;
-padding:0 20px;
+padding:0 30px 0 20px;
+color:#999;
 box-sizing:border-box;
 font-size:14px;
 margin-left:20px;
+transition:all .5s;
 &::placeholder{
     color:#9999;
+}
+&.focused{
+    width:240px;
 }
 `;
 
@@ -78,7 +86,6 @@ right:0;
 `;
 
 export const Button = styled.div`
-
 float:right;
 margin-top:9px;
 margin-right:20px;
