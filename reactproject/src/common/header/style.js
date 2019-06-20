@@ -55,6 +55,19 @@ position:relative;
         background:#999;
     }
 }
+.slide-enter{
+    width:180px;
+    transition:all .2s ease-out;
+}
+.slide-enter-active{
+    width:240px;
+}
+.slide-exit{
+    transition:all .2s ease-out;
+}
+.slide-exit-active{
+    width:180px;
+}
 `;
 
 export const NavSearch = styled.input.attrs({placeholder:'搜索'})`
@@ -64,12 +77,11 @@ margin-top:9px;
 border:none;
 border-radius:19px;
 background:#eee;
-padding:0 30px 0 20px;
+padding:0 40px 0 20px;
 color:#999;
 box-sizing:border-box;
 font-size:14px;
 margin-left:20px;
-transition:all .5s;
 &::placeholder{
     color:#9999;
 }
