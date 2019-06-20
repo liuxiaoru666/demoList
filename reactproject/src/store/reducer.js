@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import headReducer from '../common/header/store/reducer';
+import {reducer as headReducer} from '../common/header/store';
 
 export default combineReducers({
     header:headReducer
