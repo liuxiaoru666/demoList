@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {GlobalStyle} from './style';
 import {IconfontCss} from './statics/iconfont/iconfont'
 import Header from './common/header/index';
-class App extends Component {
+class App extends Component {  
   render() {
     return (
       <Fragment>
