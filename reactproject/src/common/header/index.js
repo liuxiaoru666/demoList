@@ -36,7 +36,7 @@ class Header extends Component {
                 onBlur={handleInputBlur}
                 ></NavSearch>
                 </CSSTransition>
-                <i  className={this.props.focused?'focused iconfont':'iconfont'}>&#xe800;</i>
+                <i  className={this.props.focused?'focused iconfont searchIcon':'iconfont searchIcon'}>&#xe800;</i>
                 </NavSearchWrapper>
             </Nav>
             <Adition>
@@ -62,7 +62,7 @@ class Header extends Component {
             <HotSearch onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <HotSearchTitle>
                     热门搜索
-                    <Switch onClick={()=>{handleClick(page,totalPage)}}>换一批</Switch>
+                    <Switch onClick={()=>{handleClick(page,totalPage,this.spinIcon)}}><i className='iconfont spin' ref={(icon)=>{this.spinIcon=icon}}>&#xe851;</i>换一批</Switch>
                 </HotSearchTitle>
                 <div>
                     {
@@ -106,9 +106,15 @@ const mapDispatchToProps=(dispatch)=>{
         handleMouseLeave(){
             dispatch(actionCreators.mouseLeace())
         },
-        handleClick(page,totalPage){
+        handleClick(page,totalPage,iconDom){
+            let originAngle = iconDom.style.transform.replace(/[^0-9]+/ig,'');
+            if(originAngle){
+                originAngle = parseInt(originAngle,10)
+            }else{
+                originAngle=0;
+            }
+            iconDom.style.transform='rotate('+(originAngle+360)+'deg)';
             if(page<totalPage){
-
                 dispatch(actionCreators.changePage(page+1))
             }else{
                 dispatch(actionCreators.changePage(1))

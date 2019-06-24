@@ -42,7 +42,7 @@ export const NavSearchWrapper = styled.div`
 height:100%;
 float:left; 
 position:relative;
-.iconfont{
+.searchIcon{
     position:absolute;
     right:5px;
     top:13px;
@@ -148,6 +148,14 @@ font-size:13px;
     color:#333;
 }
 cursor:pointer;
+.spin{
+    display:block;
+    float:left;
+    font-size:12px;
+    margin-right:2px;
+    transition:all .2s ease-out;
+    transform-origin:center center;
+}
 `;
 
 export const SearchItem = styled.a`
