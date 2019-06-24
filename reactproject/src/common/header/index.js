@@ -18,7 +18,7 @@ import {
 import {actionCreators} from './store';
 class Header extends Component {
     render(){
-        const {focused,handleInputBlur,handleInputFocus} = this.props;
+        const {focused,handleInputBlur,handleInputFocus,list} = this.props;
         return(
             <HeaderWrapper>
             <Logo/>
@@ -32,7 +32,7 @@ class Header extends Component {
                 <CSSTransition timeout={200} in={focused} classNames="slide">
                 <NavSearch 
                 className={focused?'focused':''} 
-                onFocus={handleInputFocus}
+                onFocus={()=>{handleInputFocus(list)}}
                 onBlur={handleInputBlur}
                 ></NavSearch>
                 </CSSTransition>
@@ -91,9 +91,9 @@ const mapStateToProps=(state)=>{
 }
 const mapDispatchToProps=(dispatch)=>{
     return{
-        handleInputFocus(){
+        handleInputFocus(list){
+           list.size===0&&dispatch(actionCreators.getListData());
             dispatch(actionCreators.searchFocus());
-            dispatch(actionCreators.getListData());
 
         },
 
