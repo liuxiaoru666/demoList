@@ -32,8 +32,8 @@ class Header extends Component {
                 <CSSTransition timeout={200} in={focused} classNames="slide">
                 <NavSearch 
                 className={focused?'focused':''} 
-                onFocus = {handleInputFocus}
-                onBlur = {handleInputBlur}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
                 ></NavSearch>
                 </CSSTransition>
                 <i  className={this.props.focused?'focused iconfont':'iconfont'}>&#xe800;</i>
@@ -49,10 +49,10 @@ class Header extends Component {
 
      getListArea(show){
          //解构赋值语法
-        const {focused,list,page,handleMouseEnter,handleMouseLeave,mouseIn,handleClick,totalPage} = this.props;
-        const jsList = list.toJS();
-        const currentList = [];
-        for(let i = (page-1)*10;i<page*10;i++){
+        const {focused,list,page,handleMouseEnter,handleMouseLeave,mouseIn,handleClick,totalPage}=this.props;
+        const jsList=list.toJS();
+        const currentList=[];
+        for(let i=(page-1)*10;i<page*10;i++){
             if(jsList[i]){
                 currentList.push(jsList[i])
             }
@@ -66,7 +66,7 @@ class Header extends Component {
                 </HotSearchTitle>
                 <div>
                     {
-                        currentList.map((item,index) =>{
+                        currentList.map((item,index)=>{
                             return(
                                 <SearchItem key={index}>{item}</SearchItem>
                             )
@@ -79,7 +79,7 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps=(state)=>{
     return{
         //
         focused:state.get('header').get('focused'),//immutable.js get方法
@@ -89,7 +89,7 @@ const mapStateToProps = (state)=>{
         totalPage:state.get('header').get('totalPage')
     }
 }
-const mapDispatchToProps = (dispatch)=>{
+const mapDispatchToProps=(dispatch)=>{
     return{
         handleInputFocus(){
             dispatch(actionCreators.searchFocus());

@@ -25,6 +25,14 @@ export const changePage=(page)=>({
     page:page
 })
 
+
+//不需要导出，actionCreator自己调用
+const updataList = (data)=>({
+    type:constants.UPDATE_LIST,
+    data:fromJS(data),
+    totalPage:Math.ceil(data.length/10)
+})
+
 //redux-thunk发起异步请求
 export const getListData=()=>{
     return (dispatch)=>{
@@ -39,10 +47,5 @@ export const getListData=()=>{
 
 
 
-//不需要导出，actionCreator自己调用
-const updataList = (data)=>({
-    type:constants.UPDATE_LIST,
-    data:fromJS(data),
-    totalPage:Math.ceil(data.length/10)
-})
+
 
