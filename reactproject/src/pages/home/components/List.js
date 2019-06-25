@@ -10,7 +10,7 @@ class List extends Component {
                       listArr.map((item,index)=>{
                            return(
                             <ListItem key={item.get('id')}>
-                                <img className='listPic' src={item.get('imgUrl')} alt='图片'/>
+                                <img className='listPic' src={item.get('imgUrl')} alt=''/>
                                 <ListInfo>
                                     <h3>{item.get('title')}</h3>
                                     <p>{item.get('content')}</p>

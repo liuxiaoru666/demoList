@@ -4,7 +4,7 @@ import {HomeWrapper,HomeLeft,HomeRight} from './style';
 //首页组件
 import Topic from './components/Topic';
 import List from './components/List';
-import Recommend from './components/Recommend';
+import Board from './components/Board';
 import Writer from './components/Writer';
 
 class Home extends Component {
@@ -17,7 +17,7 @@ class Home extends Component {
                         <List></List>
                     </HomeLeft>
                     <HomeRight>
-                        <Recommend></Recommend>
+                        <Board></Board>
                         <Writer></Writer>
                     </HomeRight>
                 </HomeWrapper>
