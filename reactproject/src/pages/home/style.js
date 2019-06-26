@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-
 export const HomeWrapper = styled.div`
 width:960px;
 margin:0 auto;
 overflow:hidden;
+padding-top:58px;
 `;
-
 export const HomeLeft = styled.div`
 width:625px;
 margin-left:15px;
@@ -18,18 +17,15 @@ float:left;
     border-radius:10px;
 }
 `;
-
 export const HomeRight = styled.div`
 width:280px;
 float:right;
 `;
-
 export const TopicWrapper=styled.div`
 padding:20px 0 10px 0;
 overflow:hidden;
 margin-left:-10px;
 `;
-
 export const TopicItem=styled.div`
 margin-left:10px;
 padding-right:10px;
@@ -51,7 +47,6 @@ margin-bottom:15px;
 }
 cursor:pointer;
 `;
-
 export const ListItem=styled.div`
 padding:20px 0;
 border-border:1px solid #f0f0f0;
@@ -85,8 +80,6 @@ p{
 export const ListInfo=styled.div`
 padding-right:165px;
 `;
-
-
 export const BoradWrapper=styled.div`
 padding-bottom: 4px;
 min-height: 228px;
@@ -99,7 +92,6 @@ img{
     margin-bottom:5px;
 }
 `;
-
 export const DownloadWraper=styled.div`
     margin-bottom: 30px;
     padding: 10px 22px;
@@ -148,13 +140,12 @@ export const DownloadWraper=styled.div`
         padding:20px;
         box-sizing:border-box;
         border:1px solid #999;
-        border-radius:5px;
+        border-radius:6px;
         :hover{
             opacity:0;
         }
     }
 `;
-
 export const WriterWrap=styled.div`
     width:100%;
     .more{

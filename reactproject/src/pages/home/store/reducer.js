@@ -26,9 +26,7 @@ const defaultState = fromJS({
         {id:3,imgUrl:'https://cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png'},
         {id:4,imgUrl:'https://cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png'}
     ],
-    writerList:[
-        {"id":1,"name":"老沈","imgUrl":"https://upload.jianshu.io/admin_banners/web_images/4660/224da83c76e01d5deff07e163615921233af5c82.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540","desc":"写了122k字 · 611喜欢"}
-    ],
+    writerList:[],
     page:1,
     totalPage:1
 });
