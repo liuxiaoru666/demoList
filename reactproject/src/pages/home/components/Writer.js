@@ -41,10 +41,6 @@ class Writer extends Component {
                </div>
         )
     }
-
-    componentDidMount(){
-        this.props.getWriterList(this.props.page);
-    }
 }
 
 
@@ -71,9 +67,6 @@ const mapDispatch=(dispatch)=>{
                 dispatch(actionCreators.changePage(1));
             }
            
-        },
-        getWriterList(page){
-            dispatch(actionCreators.getWriterList());
         }
 
     }

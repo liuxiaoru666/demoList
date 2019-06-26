@@ -8,6 +8,9 @@ import Board from './components/Board';
 import Writer from './components/Writer';
 import Download from './components/download';
 
+import {connect} from 'react-redux';
+import {actionCreators} from './store'
+
 class Home extends Component {
     render(){
         return(
@@ -25,6 +28,19 @@ class Home extends Component {
                 </HomeWrapper>
         )
     }
+    componentDidMount(){
+        this.props.getHomeData(this.props.page);
+    }
 }
 
-export default Home;
+const mapDispatch=(dispatch)=>{
+    return{
+        getHomeData(page){
+            dispatch(actionCreators.getHomeData());
+        }
+
+    }
+}
+
+
+export default connect(null,mapDispatch)(Home);

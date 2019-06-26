@@ -4,13 +4,13 @@ import axios from 'axios';
 
 export const updataWriterList=(data)=>({
     type:constants.UPDATA_WRITER_LIST,
-    data:fromJS(data),
-    totalPage:Math.ceil(data.length/5)
+    data:fromJS(data.writerList),
+    totalPage:Math.ceil(data.writerList.length/5)
 })
 
-export const getWriterList = ()=>{
+export const getHomeData = ()=>{
     return (dispatch)=>{
-        axios.get('./api/writerList.json').then((res)=>{
+        axios.get('./api/homeData.json').then((res)=>{
             dispatch(updataWriterList(res.data.data))
         })
         

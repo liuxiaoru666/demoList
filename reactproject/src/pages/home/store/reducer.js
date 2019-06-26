@@ -3,6 +3,7 @@ import * as constants  from './constants';
 import {fromJS} from 'immutable';
 // immutalble.js 生成immutable对象，把state变成不可改变的对象
 const defaultState = fromJS({
+
    topicList:[
        {id:1,title:'社会热点',imgUrl:'https://upload.jianshu.io/admin_banners/web_images/4660/224da83c76e01d5deff07e163615921233af5c82.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540'},
        {id:2,title:'手绘',imgUrl:'https://upload.jianshu.io/admin_banners/web_images/4660/224da83c76e01d5deff07e163615921233af5c82.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540'},
