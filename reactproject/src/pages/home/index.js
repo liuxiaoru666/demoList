@@ -6,6 +6,7 @@ import Topic from './components/Topic';
 import List from './components/List';
 import Board from './components/Board';
 import Writer from './components/Writer';
+import Download from './components/download';
 
 class Home extends Component {
     render(){
@@ -18,6 +19,7 @@ class Home extends Component {
                     </HomeLeft>
                     <HomeRight>
                         <Board></Board>
+                        <Download></Download>
                         <Writer></Writer>
                     </HomeRight>
                 </HomeWrapper>
