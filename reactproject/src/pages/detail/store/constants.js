@@ -1,0 +1,1 @@
+export const UPDATA_DETAIL='detail/UPDATA_DETAIL';
