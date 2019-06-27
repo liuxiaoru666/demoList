@@ -17,6 +17,7 @@ class Detail extends Component {
     
     componentDidMount(){
         this.props.getDetailData();
+        console.log(this.props.match.params.id)
     }
 }
 

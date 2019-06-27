@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {ListItem,ListInfo,LoadMore} from '../style';
 import {connect} from 'react-redux';
 import {actionCreators} from '../store';
+import {Link} from 'react-router-dom';
 class List extends Component {
     render(){
         const {listArr,loadMore}=this.props;
@@ -10,13 +11,15 @@ class List extends Component {
                    {
                       listArr.map((item,index)=>{
                            return(
-                            <ListItem key={index}>
-                                <img className='listPic' src={item.get('imgUrl')} alt=''/>
-                                <ListInfo>
-                                    <h3>{item.get('title')}</h3>
-                                    <p>{item.get('content')}</p>
-                                </ListInfo>
-                            </ListItem>
+                            <Link to={'/detail/'+item.get('id')} key={index}>
+                                <ListItem>
+                                    <img className='listPic' src={item.get('imgUrl')} alt=''/>
+                                    <ListInfo>
+                                        <h3>{item.get('title')}</h3>
+                                        <p>{item.get('content')}</p>
+                                    </ListInfo>
+                                </ListItem>
+                            </Link>
                            )
                        })
                    }
