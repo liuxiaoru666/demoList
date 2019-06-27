@@ -9,7 +9,8 @@ const defaultState = fromJS({
     boardList:[],
     writerList:[],
     page:1,
-    totalPage:1
+    totalPage:1,
+    showScroller:false
 });
 
 
@@ -27,7 +28,8 @@ export default (state=defaultState,action) => {
             return state.set('listArr',state.get('listArr').concat(action.data));
         case constants.CHANGE_PAGE:
             return state.set('page',action.page);
-        
+        case constants.TOGGLE_SCROLL_SHOW:
+            return state.set('showScroller',action.show)
         default:
         return state;
     }

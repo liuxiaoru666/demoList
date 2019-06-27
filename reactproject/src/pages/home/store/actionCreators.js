@@ -36,3 +36,8 @@ export const loadMore=()=>{
     })
  }
 }
+
+export const toggleScrollShow=(show)=>({
+    type:constants.TOGGLE_SCROLL_SHOW,
+    show:show
+})
