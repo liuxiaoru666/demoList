@@ -1,5 +1,3 @@
-export const UPDATA_WRITER_LIST='home/UPDATA_WRITER_LIST';
-export const UPDATA_TOPIC_LIST='home/UPDATA_TOPIC_LIST';
 export const CHANGE_PAGE = 'home/CHANGE_PAGE';
-export const UPDATA_BOARD_LIST='home/UPDATA_BOARD_LIST';
-export const UPDATA_HOME_LIST='home/UPDATA_HOME_LIST';
+export const UPDATA_HOME_DATA='home/UPDATA_HOME_DATA';
+export const ADD_HOME_LIST="home/ADD_HOME_LIST";

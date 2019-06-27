@@ -15,14 +15,16 @@ const defaultState = fromJS({
 
 export default (state=defaultState,action) => {
     switch(action.type){
-        case constants.UPDATA_WRITER_LIST:
-        return state.set('writerList',action.data).set('totalPage',action.totalPage);
-        case constants.UPDATA_TOPIC_LIST:
-            return state.set('topicList',action.data);
-            case constants.UPDATA_BOARD_LIST:
-                    return state.set('boardList',action.data);
-        case constants.UPDATA_HOME_LIST:
-            return state.set("listArr",action.data);
+        case constants.UPDATA_HOME_DATA:
+            return state.merge({
+                "listArr":fromJS(action.data.listArr),
+                "writerList":fromJS(action.data.writerList),
+                "topicList":fromJS(action.data.topicList),
+                "boardList":fromJS(action.data.boardList),
+                "totalPage":action.totalPage
+            });
+        case constants.ADD_HOME_LIST:
+            return state.set('listArr',state.get('listArr').concat(action.data));
         case constants.CHANGE_PAGE:
             return state.set('page',action.page);
         

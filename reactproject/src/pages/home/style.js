@@ -49,7 +49,7 @@ cursor:pointer;
 `;
 export const ListItem=styled.div`
 padding:20px 0;
-border-border:1px solid #f0f0f0;
+border-bottom:1px solid #f0f0f0;
 width:100%;
 overflow:hidden;
 h3{
@@ -79,6 +79,20 @@ p{
 
 export const ListInfo=styled.div`
 padding-right:165px;
+`;
+export const LoadMore=styled.div`
+    width: 100%;
+    height: 40px;
+    margin: 30px auto 60px;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #a5a5a5;
+    display: block;
+    box-sizing:border-box;
+    cursor:pointer;
 `;
 export const BoradWrapper=styled.div`
 padding-bottom: 4px;
