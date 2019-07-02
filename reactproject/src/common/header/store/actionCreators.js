@@ -36,7 +36,7 @@ const updataList = (data)=>({
 //redux-thunk发起异步请求
 export const getListData=()=>{
     return (dispatch)=>{
-        axios.get('./api/headerList.json').then((res)=>{
+        axios.get('/api/headerList.json').then((res)=>{
             const data = res.data.data;
             dispatch(updataList(data))
         }).catch((error=>{
