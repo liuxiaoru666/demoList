@@ -23,11 +23,11 @@ class Header extends Component {
         const {focused,handleInputBlur,handleInputFocus,list,login,logout} = this.props;
         return(
             <HeaderWrapper>
-            <Link to="/">
-                 <Logo/>
-            </Link>
+            <Logo/>
             <Nav>
-                <NavItem className='left active'>首页</NavItem>
+                <Link to="/">
+                    <NavItem className='left active'>首页</NavItem>
+                </Link>
                 <NavItem className='left'>下载APP</NavItem>
                 {login?<NavItem className='right' onClick={logout}>退出</NavItem>:<Link to='/login'><NavItem className='right'>登录</NavItem></Link>}
                 <NavItem className='right'><i className='iconfont'>&#xe636;</i></NavItem>
@@ -44,7 +44,9 @@ class Header extends Component {
                 </NavSearchWrapper>
             </Nav>
             <Adition>
-                <Button className='write'><i className='iconfont'>&#xe608;</i><span>写文章</span></Button>
+                <Link to="/write">
+                    <Button className='write'><i className='iconfont'>&#xe608;</i><span>写文章</span></Button>
+                </Link>
                 <Button className='reg'>注册</Button>
             </Adition>
         </HeaderWrapper> 

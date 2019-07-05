@@ -19,7 +19,7 @@ class Detail extends Component {
         this.props.getDetailData();
         console.log(this.props.match.params.id)
     }
-}
+};
 
 
 const mapState=(state)=>{
@@ -27,7 +27,7 @@ const mapState=(state)=>{
         title:state.get('detail').get('title'),
         content:state.get('detail').get('content')
     }
-}
+};
 
 const mapDisPatch=(dispatch)=>{
     return{
@@ -35,7 +35,7 @@ const mapDisPatch=(dispatch)=>{
             dispatch(actionCreators.getDetailData());
         }
     }
-}
+};
 
 
 export default connect(mapState,mapDisPatch)(Detail);

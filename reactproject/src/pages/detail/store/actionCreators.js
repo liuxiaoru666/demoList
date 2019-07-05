@@ -14,6 +14,7 @@ export const getDetailData=()=>{
         axios.get('/api/detailData.json').then(res=>{
             const data = res.data.data;
             dispatch(updataDetail(data.title,data.content))
-        })
+        }).catch((err)=>{})
+
     }
 }
